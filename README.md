@@ -1,4 +1,4 @@
-<h1 align="center">🤖 Chatbot WhatsApp</h1>
+<h1 align="center"> Chatbot WhatsApp</h1>
 
 <p align="center">
   Chatbot integrado à <b>API oficial do WhatsApp</b>, com regras próprias, IA opcional e histórico de conversas.
@@ -14,13 +14,13 @@
 
 ---
 
-## 📌 Sobre o projeto
+##  Sobre o projeto
 
 Projeto facultativo que implementa um chatbot para WhatsApp usando a **WhatsApp Business Platform** da Meta (sem automação da conta pessoal). O sistema recebe mensagens por **webhook**, decide a resposta com regras próprias e/ou **Inteligência Artificial**, responde automaticamente e **registra cada interação** em banco de dados.
 
 O código é modular (rotas, serviços e modelos separados), fácil de evoluir e coberto por testes automatizados.
 
-## 💬 Exemplo de conversa
+##  Exemplo de conversa
 
 ```text
 Usuário: Olá
@@ -35,18 +35,18 @@ Bot:     No momento consigo processar apenas mensagens de texto.
 ![Documentação da API](docs/swagger.png)
 -->
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
-- 📥 Recebimento de mensagens via webhook, com identificação do usuário
-- 🧠 Respostas por **regras próprias** e/ou **IA** (OpenAI, opcional)
-- 📤 Envio automático da resposta pela API oficial
-- 🗄️ Registro de mensagem, resposta, tipo, status e data/hora
-- 🔁 **Anti-duplicidade** por `message_id` (o mesmo evento nunca é respondido duas vezes)
-- 🖼️ Tratamento amigável de tipos não suportados (imagem, áudio, documento)
-- 📜 **Histórico de conversas** via API protegida por chave
-- 🔐 Validação da assinatura do webhook, logs com telefones mascarados e limite de tamanho das mensagens
+-  Recebimento de mensagens via webhook, com identificação do usuário
+-  Respostas por **regras próprias** e/ou **IA** (OpenAI, opcional)
+-  Envio automático da resposta pela API oficial
+-  Registro de mensagem, resposta, tipo, status e data/hora
+-  **Anti-duplicidade** por `message_id` (o mesmo evento nunca é respondido duas vezes)
+-  Tratamento amigável de tipos não suportados (imagem, áudio, documento)
+-  **Histórico de conversas** via API protegida por chave
+-  Validação da assinatura do webhook, logs com telefones mascarados e limite de tamanho das mensagens
 
-## 🧩 Como funciona
+##  Como funciona
 
 ```text
 Usuário → WhatsApp → API da Meta → POST /webhook → FastAPI
@@ -61,7 +61,7 @@ Usuário → WhatsApp → API da Meta → POST /webhook → FastAPI
 
 O webhook responde `200` imediatamente e processa em segundo plano, evitando reenvios da Meta por timeout.
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 | | |
 | --- | --- |
@@ -73,7 +73,7 @@ O webhook responde `200` imediatamente e processa em segundo plano, evitando ree
 | **HTTP** | httpx |
 | **Testes** | pytest |
 
-## 🚀 Começando
+##  Começando
 
 ### Pré-requisitos
 
@@ -127,7 +127,7 @@ ngrok http 8000
 
 </details>
 
-## ⚙️ Variáveis de ambiente
+##  Variáveis de ambiente
 
 Copie o `.env.example` para `.env` e preencha:
 
@@ -143,9 +143,9 @@ Copie o `.env.example` para `.env` e preencha:
 | `ADMIN_API_KEY` | — | Chave do histórico; vazia = rota desativada |
 | `MAX_MESSAGE_LENGTH` | — | Limite de caracteres por mensagem (padrão `1000`) |
 
-> ⚠️ **Nunca** envie o `.env` ao GitHub. Ele já está no `.gitignore`.
+>  **Nunca** envie o `.env` ao GitHub. Ele já está no `.gitignore`.
 
-## 🔌 API
+##  API
 
 | Método | Rota | Descrição |
 | --- | --- | --- |
@@ -161,7 +161,7 @@ curl -H "X-API-Key: SUA_CHAVE" "http://localhost:8000/chat/history?limit=10"
 ```
 
 <details>
-<summary><b>🗄️ Banco de dados e status de processamento</b></summary>
+<summary><b> Banco de dados e status de processamento</b></summary>
 
 <br>
 
@@ -184,7 +184,7 @@ Status possíveis: `received` · `replied` · `unsupported` · `invalid` · `ai_
 </details>
 
 <details>
-<summary><b>📁 Estrutura do projeto</b></summary>
+<summary><b> Estrutura do projeto</b></summary>
 
 <br>
 
@@ -212,7 +212,7 @@ chatbot-whatsapp/
 
 </details>
 
-## 🧪 Testes
+## Testes
 
 ```bash
 pytest
@@ -220,7 +220,7 @@ pytest
 
 Os testes não usam a rede e cobrem verificação do webhook, assinatura, payload inválido, eventos de status, saudação, mensagens duplicadas, tipos não suportados, mensagens longas e o histórico.
 
-## 🔒 Segurança
+##  Segurança
 
 - Credenciais somente em variáveis de ambiente
 - Verificação do token do webhook e da assinatura `X-Hub-Signature-256`
@@ -229,7 +229,7 @@ Os testes não usam a rede e cobrem verificação do webhook, assinatura, payloa
 - Armazenamento mínimo de dados pessoais
 - HTTPS obrigatório em produção
 
-## ☁️ Deploy
+## Deploy
 
 Use um servidor com HTTPS (Render, Railway, AWS, Azure, Google Cloud…):
 
@@ -239,7 +239,7 @@ uvicorn app.main:app --host 0.0.0.0 --port $PORT
 
 Em produção, use **PostgreSQL** via `DATABASE_URL` (o SQLite se perde em discos efêmeros), configure `WHATSAPP_APP_SECRET`, troque o token temporário por um **token permanente** da Meta e atualize a URL do webhook.
 
-## 🗺️ Roadmap
+##  Roadmap
 
 - [ ] Menu automático e comandos (`menu`, `ajuda`, `sair`)
 - [ ] IA com contexto das mensagens anteriores
@@ -248,6 +248,6 @@ Em produção, use **PostgreSQL** via `DATABASE_URL` (o SQLite se perde em disco
 - [ ] Suporte a imagem, áudio e documentos
 - [ ] Migrações com Alembic
 
-## 👤 Autor
+##  Autor
 
 **Jonathan Freitas** — [@jonapro23](https://github.com/jonapro23)
