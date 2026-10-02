@@ -266,9 +266,6 @@ Em produção, use **PostgreSQL** via `DATABASE_URL` (o SQLite se perde em disco
   <img alt="Tests" src="https://img.shields.io/badge/tests-pytest-0A9EDC?logo=pytest&logoColor=white">
 </p>
 
-<p align="center">
-  🇧🇷 <a href="README.md">Leia em português</a>
-</p>
 
 ---
 
